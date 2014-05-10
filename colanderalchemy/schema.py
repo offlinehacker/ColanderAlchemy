@@ -122,6 +122,10 @@ class SQLAlchemySchemaNode(colander.SchemaNode):
         self.unknown = unknown
         self.declarative_overrides = {}
         self.kwargs = kwargs or {}
+
+        # ca_class_key overrides
+        self.overrides.update(self.kwargs.get("overrides", {}))
+
         self.add_nodes(self.includes, self.excludes, self.overrides)
 
     def add_nodes(self, includes, excludes, overrides):
